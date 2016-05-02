@@ -59,7 +59,7 @@ public class StockClient {
 		
 		// Lets try to connect using socket first, if it fails then use the webservice		
 		try {
-			String destURI = "ws://localhost:8080/StockCentral/stockCentral--";
+			String destURI = "ws://localhost:8080/StockCentral/stockCentral";
 			sock = new SimpleSocket();
 			WebSocketContainer container = ContainerProvider.getWebSocketContainer();
 			container.connectToServer(sock, new URI(destURI));

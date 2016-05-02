@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://market.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://market.com" xmlns:intf="http://market.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://market.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="stockQuote">
+    <complexType>
+     <sequence>
+      <element name="scriptname" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="stockQuoteResponse">
+    <complexType>
+     <sequence>
+      <element name="stockQuoteReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="stockQuoteRequest">
+
+      <wsdl:part element="impl:stockQuote" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="stockQuoteResponse">
+
+      <wsdl:part element="impl:stockQuoteResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="StockBroker">
+
+      <wsdl:operation name="stockQuote">
+
+         <wsdl:input message="impl:stockQuoteRequest" name="stockQuoteRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:stockQuoteResponse" name="stockQuoteResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="StockBrokerSoapBinding" type="impl:StockBroker">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="stockQuote">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="stockQuoteRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="stockQuoteResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="StockBrokerService">
+
+      <wsdl:port binding="impl:StockBrokerSoapBinding" name="StockBroker">
+
+         <wsdlsoap:address location="http://localhost:8080/StockCentral/services/StockBroker"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
